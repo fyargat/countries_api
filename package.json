@@ -21,6 +21,9 @@
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
