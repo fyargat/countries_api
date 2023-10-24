@@ -9,6 +9,14 @@ services:
       - target: 3000
         published: 3000
         mode: host
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npx prisma db push
+        npx prisma db seed
+        yarn start:dev
+
     environment:
       - NODE_ENV=development
       - TZ="Europe/Samara"
@@ -20,7 +28,6 @@ services:
 
   db:
     image: postgres:latest
-    restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres123

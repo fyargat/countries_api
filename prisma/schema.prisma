@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,3 +6,40 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Country {
+  id Int @id @default(autoincrement())
+  name String
+  topLevelDomain String[] @default([])
+	alpha2Code String @unique
+	alpha3Code String @unique
+  capital String @default("")
+  region String
+  subregion String
+  population Int
+  nativeName String
+  area Int @default(0)
+  borders String[] @default([])
+  currencies Currency[]
+  languages Language[]
+  flag String
+}
+
+model Currency {
+  id Int @id @default(autoincrement())
+  code String
+  name String
+  symbol String
+  countries Country[]
+}
+
+model Language {
+  id Int @id @default(autoincrement())
+ 	iso639_1 String @default("")
+	iso639_2 String @default("")
+	name String
+	nativeName String @default("")
+  countries Country[]
+}
+
+
