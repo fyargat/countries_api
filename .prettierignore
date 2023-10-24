@@ -1,0 +1,6 @@
+node_modules
+.husky
+coverage
+.prettierignore
+.eslintignore
+.yarn.lock
