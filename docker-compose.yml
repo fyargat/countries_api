@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  api:
+    # image:
+    environment:
+      - NODE_ENV=development
+      - TZ="Europe/Samara"
+    env_file:
+      - '.env'
