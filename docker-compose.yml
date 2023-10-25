@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   api:
-    # image: countries_api2:latest
+    image: ghcr.io/fyargat/countries_api:latest
     depends_on:
       - db
     environment:
