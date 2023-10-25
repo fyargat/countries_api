@@ -68,4 +68,4 @@ jobs:
       - name: Docker stack deploy
         run: |
           docker pull ghcr.io/fyargat/$IMAGE_NAME:latest
-          docker stack deploy -c docker-compose.yml --with-registry-auth portfolio
+          docker stack deploy -c docker-compose.yml --with-registry-auth countries
