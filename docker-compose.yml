@@ -16,7 +16,7 @@ services:
     env_file:
       - '.env'
     volumes:
-      - db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data:z
 
 volumes:
   db:
