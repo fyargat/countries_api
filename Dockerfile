@@ -43,6 +43,10 @@ COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modul
 
 COPY --chown=node:node . .
 
+COPY --chown=node:node prisma prisma
+
+RUN npx prisma generate
+
 # Run the build command which creates the production bundle
 RUN yarn build
 
@@ -65,6 +69,7 @@ FROM node:20-alpine As production
 # Copy the bundled code from the build stage to the production image
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+COPY --chown=node:node --from=build  /usr/src/app/prisma ./prisma
 
 # Start the server using the production build
-CMD [ "node", "dist/main.js" ]
+CMD [ "node", "dist/src/main.js" ]

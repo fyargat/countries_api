@@ -2,9 +2,21 @@ version: '3.8'
 
 services:
   api:
-    # image:
+    # image: countries_api2:latest
+    depends_on:
+      - db
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - TZ="Europe/Samara"
     env_file:
       - '.env'
+
+  db:
+    image: postgres:latest
+    env_file:
+      - '.env'
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
